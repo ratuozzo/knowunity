@@ -30,6 +30,8 @@ class CreateTodoDialogPresenter extends ChangeNotifier {
       notifyListeners();
       return;
     }
+    _isLoading = true;
+    notifyListeners();
     TodoItemRepository todoItemRepository = TodoItemRepository();
     TodoItem newItem = await todoItemRepository.create(
       TodoItem(
@@ -38,6 +40,8 @@ class CreateTodoDialogPresenter extends ChangeNotifier {
         completed: _completed,
       ),
     );
+    _isLoading = true;
+    notifyListeners();
     Navigator.pop(context, newItem);
   }
 
