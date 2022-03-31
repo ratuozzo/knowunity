@@ -10,9 +10,9 @@ class TodoItem {
   static const String _COMPLETED_KEY = "completed";
 
   TodoItem({
-    required this.id,
-    required this.userId,
-    required this.title,
+    this.id,
+    this.userId,
+    this.title,
     required this.completed,
   });
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knowunity/ui/home/components/create_todo_dialog/create_todo_dialog.dart';
 import 'package:knowunity/ui/home/components/progress_appbar.dart';
 import 'package:knowunity/ui/home/components/todo_item_tile.dart';
 import 'package:knowunity/ui/home/components/todo_item_tile_background.dart';
@@ -35,6 +36,23 @@ class HomeScreen extends StatelessWidget {
             );
           },
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton:
+            Consumer<HomeScreenPresenter>(builder: (context, presenter, _) {
+          return FloatingActionButton(
+            child: const Icon(FontAwesomeIcons.plus),
+            onPressed: () async {
+              await showDialog(
+                context: context,
+                builder: (context) {
+                  return const CreateTodoDialog();
+                },
+              ).then((newItem) {
+                presenter.addNewItem(newItem);
+              });
+            },
+          );
+        }),
       ),
     );
   }

@@ -47,4 +47,12 @@ class HomeScreenPresenter extends ChangeNotifier {
     _items.removeAt(index);
     notifyListeners();
   }
+
+  void addNewItem(TodoItem? item) {
+    if (item != null) {
+      _items.insert(0, item);
+      if (item.completed) _completedCount++;
+      notifyListeners();
+    }
+  }
 }

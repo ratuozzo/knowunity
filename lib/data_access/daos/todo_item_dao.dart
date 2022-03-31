@@ -21,7 +21,7 @@ class TodoItemDao {
     ApiHelper apiHelper = ApiHelper();
     var response = await apiHelper.post(url, item.toJson());
     var responseJson = json.decode(response.body.toString());
-    TodoItem output = TodoItem.fromJson(responseJson.toJson());
+    TodoItem output = TodoItem.fromJson(responseJson);
     return output;
   }
 }
