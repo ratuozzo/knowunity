@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knowunity/ui/home/components/progress_appbar.dart';
 import 'package:knowunity/ui/home/components/todo_item_tile.dart';
 import 'package:knowunity/ui/home/components/todo_item_tile_background.dart';
 import 'package:knowunity/ui/home/home_screen_presenter.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
     return ChangeNotifierProvider<HomeScreenPresenter>(
       create: (context) => _createPresenter()..onCreate(),
       child: Scaffold(
+        appBar: const ProgressAppbar(),
         body: Consumer<HomeScreenPresenter>(
           builder: (context, presenter, _) {
             return ListView.builder(
