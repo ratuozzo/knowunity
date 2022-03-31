@@ -9,7 +9,7 @@ class CreateTodoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CreateTodoDialogPresenter>(
-      create: (context) => _createPresenter(),
+      create: (context) => _createPresenter()..onCreate(),
       child: Consumer<CreateTodoDialogPresenter>(
         builder: (context, presenter, _) {
           return Dialog(
@@ -40,8 +40,9 @@ class CreateTodoDialog extends StatelessWidget {
                     children: [
                       TextField(
                         controller: presenter.titleController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: 'Title',
+                          errorText: presenter.errorMessage,
                         ),
                       ),
                       Container(height: 15),
