@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
               );
             }
             return ListView.builder(
+              padding: const EdgeInsets.only(bottom: 80),
               itemBuilder: (context, index) {
                 return Dismissible(
                   key: UniqueKey(),
