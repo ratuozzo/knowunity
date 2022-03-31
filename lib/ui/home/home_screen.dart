@@ -6,7 +6,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return Dismissible(
+            key: UniqueKey(),
+            direction: DismissDirection.endToStart,
+            background: Container(
+              color: Colors.red,
+            ),
+            child: const ListTile(
+              title: Text('title'),
+            ),
+          );
+        },
+        itemCount: 30,
+      ),
     );
   }
 }
