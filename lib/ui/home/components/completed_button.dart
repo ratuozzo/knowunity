@@ -25,7 +25,7 @@ class CompletedButton extends StatelessWidget {
           height: 25,
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.green,
+              color: const Color(0xFF5F6CFB),
               width: 2,
             ),
             borderRadius: const BorderRadius.all(
@@ -38,7 +38,7 @@ class CompletedButton extends StatelessWidget {
                     borderRadius: BorderRadius.all(
                       Radius.circular(100),
                     ),
-                    color: Colors.green,
+                    color: Color(0xFF5F6CFB),
                   ),
                 )
               : null,
