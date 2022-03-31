@@ -23,4 +23,18 @@ class HomeScreenPresenter extends ChangeNotifier {
     _isLoading = false;
     notifyListeners();
   }
+
+  void tapCompleted(int index) {
+    if (_items[index].completed == false) {
+      _items[index].completed = true;
+    } else {
+      _items[index].completed = false;
+    }
+    notifyListeners();
+  }
+
+  void dismissItem(int index) {
+    _items.removeAt(index);
+    notifyListeners();
+  }
 }

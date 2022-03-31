@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knowunity/ui/home/components/todo_item_tile.dart';
+import 'package:knowunity/ui/home/components/todo_item_tile_background.dart';
 import 'package:knowunity/ui/home/home_screen_presenter.dart';
 import 'package:provider/provider.dart';
 
@@ -18,18 +20,13 @@ class HomeScreen extends StatelessWidget {
                 return Dismissible(
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
-                  background: Container(
-                    padding: const EdgeInsets.only(right: 10),
-                    color: Colors.red,
-                    child: const Icon(
-                      FontAwesomeIcons.trashCan,
-                      size: 25,
-                    ),
-                    alignment: Alignment.centerRight,
+                  child: TodoItemTile(
+                    item: presenter.items[index],
+                    onCompletedTap: () => presenter.tapCompleted(index),
                   ),
-                  child: ListTile(
-                    title: Text(presenter.items[index].title ?? ''),
-                  ),
+                  background: const TodoItemTileBackground(),
+                  onDismissed: (DismissDirection direction) =>
+                      presenter.dismissItem(index),
                 );
               },
               itemCount: presenter.items.length,
