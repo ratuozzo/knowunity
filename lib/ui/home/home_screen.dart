@@ -34,6 +34,7 @@ class HomeScreen extends StatelessWidget {
                   child: TodoItemTile(
                     item: presenter.items[index],
                     onCompletedTap: () => presenter.tapCompleted(index),
+                    index: index,
                   ),
                   background: const TodoItemTileBackground(),
                   onDismissed: (DismissDirection direction) =>

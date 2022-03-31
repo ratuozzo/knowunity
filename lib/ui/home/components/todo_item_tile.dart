@@ -5,10 +5,14 @@ import 'package:knowunity/ui/home/components/completed_button.dart';
 class TodoItemTile extends StatelessWidget {
   final TodoItem item;
   final Function onCompletedTap;
+  final int index;
 
-  const TodoItemTile(
-      {Key? key, required this.item, required this.onCompletedTap})
-      : super(key: key);
+  const TodoItemTile({
+    Key? key,
+    required this.item,
+    required this.onCompletedTap,
+    required this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,9 @@ class TodoItemTile extends StatelessWidget {
           done: item.completed,
           onTap: () => onCompletedTap(),
         ),
+        tileColor: (index % 2 == 0)
+            ? Colors.transparent
+            : Colors.grey.withOpacity(0.2),
       ),
     );
   }
