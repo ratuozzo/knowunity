@@ -18,17 +18,23 @@ class ProgressAppbar extends StatelessWidget implements PreferredSizeWidget {
               Container(
                 margin: const EdgeInsets.only(top: 25, bottom: 10),
                 child: LinearProgressIndicator(
-                  value: _getProgressValue(
-                      presenter.items.length, presenter.completedCount),
+                  value: presenter.isLoading
+                      ? 0
+                      : _getProgressValue(
+                          presenter.items.length, presenter.completedCount),
                   color: const Color(0xFF52D4FA),
                   backgroundColor: Colors.white,
                   minHeight: 8,
                 ),
               ),
               Text(
-                presenter.completedCount.toString() +
+                (presenter.isLoading
+                        ? '0'
+                        : presenter.completedCount.toString()) +
                     '/' +
-                    presenter.items.length.toString() +
+                    (presenter.isLoading
+                        ? '0'
+                        : presenter.items.length.toString()) +
                     ' completed',
               ),
             ],

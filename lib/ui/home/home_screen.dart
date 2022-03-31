@@ -18,6 +18,13 @@ class HomeScreen extends StatelessWidget {
         appBar: const ProgressAppbar(),
         body: Consumer<HomeScreenPresenter>(
           builder: (context, presenter, _) {
+            if (presenter.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Color(0xFF52D4FA),
+                ),
+              );
+            }
             return ListView.builder(
               itemBuilder: (context, index) {
                 return Dismissible(
@@ -32,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                       presenter.dismissItem(index),
                 );
               },
-              itemCount: presenter.items.length,
+              itemCount: presenter.isLoading ? 0 : presenter.items.length,
             );
           },
         ),
