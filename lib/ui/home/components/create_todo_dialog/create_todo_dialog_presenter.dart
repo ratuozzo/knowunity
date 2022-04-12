@@ -24,11 +24,11 @@ class CreateTodoDialogPresenter extends ChangeNotifier {
     });
   }
 
-  void save(BuildContext context) async {
+  Future<TodoItem?> save(BuildContext context) async {
     if (titleController.text.isEmpty || titleController.text == '') {
       _errorMessage = "Title can't be empty";
       notifyListeners();
-      return;
+      return null;
     }
     _isLoading = true;
     notifyListeners();
@@ -42,7 +42,7 @@ class CreateTodoDialogPresenter extends ChangeNotifier {
     );
     _isLoading = true;
     notifyListeners();
-    Navigator.pop(context, newItem);
+    return newItem;
   }
 
   void tapCompleted() {

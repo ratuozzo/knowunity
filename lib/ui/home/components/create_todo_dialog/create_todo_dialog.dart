@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowunity/model/todo_item.dart';
 import 'package:knowunity/ui/home/components/completed_button.dart';
 import 'package:knowunity/ui/home/components/create_todo_dialog/create_todo_dialog_presenter.dart';
 import 'package:provider/provider.dart';
@@ -82,7 +83,13 @@ class CreateTodoDialog extends StatelessWidget {
                                   ),
                                 ),
                                 TextButton(
-                                  onPressed: () => presenter.save(context),
+                                  onPressed: () async {
+                                    TodoItem? newItem =
+                                        await presenter.save(context);
+                                    if (newItem != null) {
+                                      Navigator.pop(context, newItem);
+                                    }
+                                  },
                                   child: const Text('Save'),
                                   style: ButtonStyle(
                                     backgroundColor:
